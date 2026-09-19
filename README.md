@@ -46,3 +46,4 @@ sudo ufw allow 443/tcp
 sudo ss -tulpn
 curl http://localhost
 curl -k https://localhost
+
