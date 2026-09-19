@@ -1,0 +1,25 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name linux-web-server;
+
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name linux-web-server;
+
+    root /var/www/linux-web-server;
+    index index.html;
+
+    ssl_certificate /etc/nginx/ssl/linux-web-server.crt;
+    ssl_certificate_key /etc/nginx/ssl/linux-web-server.key;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
